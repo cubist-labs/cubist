@@ -934,7 +934,7 @@ version = "0.0.0"
 dependencies = [
  "assert_cmd",
  "assert_matches",
- "base64 0.13.1",
+ "base64 0.21.0",
  "clap 4.0.32",
  "color-eyre",
  "console 0.15.4",
@@ -1018,7 +1018,7 @@ name = "cubist-localchains"
 version = "0.1.0"
 dependencies = [
  "async-trait",
- "base64 0.13.1",
+ "base64 0.21.0",
  "blake3",
  "clap 4.0.32",
  "color-eyre",
