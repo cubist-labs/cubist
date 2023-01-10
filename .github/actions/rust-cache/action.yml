@@ -1,0 +1,49 @@
+name: Rust with caching and sccaching support
+description: Rust with caching and sccaching support 
+
+inputs:
+  key:
+    description: "Key to use for the cache (combined with date)"
+    required: true
+  additional-restore-key:
+    description: "Additional key to use for the restore (combined with date)"
+    type: false
+  path:
+    description: "Additional paths to cache"
+    required: false
+
+runs:
+  using: "composite"
+  steps:
+  # From https://github.com/actions/cache#creating-a-cache-key
+  - name: Get Date
+    id: get-date
+    run: |
+      echo "::set-output name=date::$(/bin/date -u "+%Y%m%d")"
+    shell: bash
+
+  - name: Cache target directory and cargo directories
+    uses: actions/cache@v3
+    with:
+      path: |
+        target
+        ~/.cargo/bin
+        ~/.cargo/registry
+        ~/.cargo/git
+        ~/.cache/sccache
+        ~/.rustup
+        ${{ inputs.path }}
+      key: ${{ inputs.key }}-${{ steps.get-date.outputs.date }}
+      restore-keys: |
+        ${{ inputs.key }}-${{ steps.get-date.outputs.date }}
+        ${{ inputs.additional-retore-key }}-${{ steps.get-date.outputs.date }}
+
+  - name: Install sccache
+    shell: bash
+    run: |
+      set -euo pipefail
+
+      wget -O sccache.tgz -q https://github.com/mozilla/sccache/releases/download/v0.3.0/sccache-v0.3.0-x86_64-unknown-linux-musl.tar.gz
+      tar xzvf sccache.tgz
+      sudo cp -vf sccache-v0.3.0-x86_64-unknown-linux-musl/sccache /usr/bin/sccache
+      sudo chmod -v +x /usr/bin/sccache

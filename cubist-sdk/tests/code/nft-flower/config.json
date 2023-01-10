@@ -1,0 +1,10 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+          "polygon": { "files": [ "DynNFT.sol" ] },
+          "ethereum": { "files": [ "Grower.sol" ] }
+        }
+    }
+}

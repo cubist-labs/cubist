@@ -1,0 +1,15 @@
+{
+    "type": "Rust",
+    "build_dir": "build",
+    "deploy_dir": "deploy",
+    "contracts": {
+        "root_dir": "contracts",
+        "targets": {}
+    },
+    "network_profiles": {
+        "default": {
+            "ethereum": { "url": "http://localhost:20000" },
+            "polygon":  { "url": "http://localhost:21000" }
+        }
+    }    
+}

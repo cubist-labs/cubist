@@ -1,0 +1,36 @@
+name: Node.js SDK Deploy
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  node-sdk-update:
+    runs-on: ubuntu-latest
+    # add deploy key
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        # Fetch the complete history
+        fetch-depth: 0
+    - name: Start ssh-agent and push
+      uses: ./.github/actions/run-with-ssh-key
+      with:
+        secret-ssh-key: ${{ secrets.NODE_SDK_SSH_DEPLOY_KEY }}
+        run: |
+          # build JavaScript files and check them into the repo
+          pushd cubist-node-sdk
+          yarn && yarn build
+          git add dist -f
+          git config --global user.email "d+node-sdk-deploy-key@cubist.dev"
+          git config --global user.name "node-ssh-deploy-key"
+          git commit -am "Checking in dist" --no-verify
+          popd
+          # force push subtree
+          git push -f git@github.com:cubist-alpha/cubist-node-sdk $(git subtree split --prefix cubist-node-sdk main):main
+
+    # Only run a single instance of this workflow per branch/tag
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true

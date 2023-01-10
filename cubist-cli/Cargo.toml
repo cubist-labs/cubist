@@ -1,0 +1,71 @@
+[package]
+name = "cubist-cli"
+version = "0.0.0"
+edition = "2021"
+
+[[bin]]
+name = "cubist"
+path = "src/main.rs"
+
+[dependencies]
+cubist-config = { path = "../cubist-config" }
+cubist-sdk = { path = "../cubist-sdk" }
+cubist-util = { path = "../cubist-util" }
+cubist-localchains = { path = "../cubist-localchains" }
+
+# cli related
+clap = { workspace = true, features = ["derive", "color", "wrap_help"] } # cli
+console.workspace = true
+ctrlc.workspace = true
+dialoguer.workspace = true
+
+# ethers
+ethers-core.workspace = true
+ethers-contract.workspace = true
+ethers-contract-abigen.workspace = true
+ethers-providers.workspace = true
+
+# utils
+base64.workspace = true
+fs_extra.workspace = true
+glob.workspace = true
+itertools.workspace = true
+lazy_static.workspace = true
+notify.workspace = true
+path-clean.workspace = true
+rust-embed = { workspace = true, features = ["interpolate-folder-path", "compression"] }
+scopeguard.workspace = true
+tempfile.workspace = true
+tera.workspace = true
+tracing-subscriber.workspace = true
+tracing.workspace = true
+url.workspace = true
+whoami.workspace = true
+
+# serde related
+parse-display.workspace = true
+serde.workspace = true
+serde_derive.workspace = true
+serde_json.workspace = true
+serde_with.workspace = true
+
+# toml
+toml.workspace = true
+
+tokio = {workspace = true, features = ["rt", "rt-multi-thread", "process", "signal"]}
+futures.workspace = true
+
+# error handling related
+thiserror.workspace = true
+color-eyre = { workspace = true, default-features = false }
+eyre.workspace = true
+
+[dev-dependencies]
+assert_cmd.workspace = true
+assert_matches.workspace = true
+dotenv.workspace = true
+serial_test.workspace = true
+tempfile.workspace = true
+rstest.workspace = true
+tokio.workspace = true
+tracing-test = {workspace = true, features=["no-env-filter"]}

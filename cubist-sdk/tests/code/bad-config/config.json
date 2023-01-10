@@ -1,0 +1,9 @@
+{
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+          "ethereum": { "files": [ "EthStorage.sol" ] },
+          "avalanche": { "files": [ "AvaStorage.sol" ] }
+        }
+    }
+}

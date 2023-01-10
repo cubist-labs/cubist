@@ -1,0 +1,22 @@
+name: Rust as cubist-readonly-bot
+description: Rust as cubist-readonly-bot
+
+inputs:
+  run:
+    description: "Commands to run"
+    required: true
+  secret-ssh-key:
+    description: "Secret ssh key to use"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+  - name: Start ssh-agent and run command
+    shell: bash
+    run: |
+      set -e
+      eval "$(ssh-agent -s)"
+      ssh-add <(echo "${{ inputs.secret-ssh-key }}")
+      ssh -o "StrictHostKeyChecking=no" git@github.com || true
+      ${{ inputs.run }}

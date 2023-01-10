@@ -1,0 +1,13 @@
+{
+  "file": "ERC20Bridged.sol",
+  "sender": "avalanche",
+  "receiver": "ethereum",
+  "contracts": [
+    {
+      "name": "ERC20Bridged",
+      "functions": {
+        "bridgeMint": "__cubist_event_ERC20Bridged_bridgeMint"
+      }
+    }
+  ]
+}
