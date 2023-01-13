@@ -1,0 +1,10 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": "contracts",
+        "targets": {
+            "avalanche": { "files": [ "contracts/marketplace/Marketplace.sol" ] },
+            "ethereum": { "files": [ "contracts/User.sol" ] }
+        }
+    }
+}

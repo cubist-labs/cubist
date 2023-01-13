@@ -1,0 +1,26 @@
+{
+  "type": "JavaScript",
+  "build_dir": "build",
+  "deploy_dir": "deploy",
+  "contracts": {
+    "root_dir": "contracts",
+    "targets": {
+      "ethereum" : {
+        "files": ["./contracts/EthCounter.sol"]
+      },
+      "polygon": {
+        "files": ["./contracts/poly.sol"]
+      }
+    }
+  },
+  "network_profiles": {
+     "default": {
+        "polygon": {
+            "url": "http://localhost:9545"
+        },
+        "ethereum": {
+            "url": "http://localhost:8545"
+        }
+     }
+  }
+}

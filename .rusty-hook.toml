@@ -1,0 +1,5 @@
+[hooks]
+pre-commit = "cargo fmt --check && cargo clippy --tests --examples -- -D warnings && env RUSTDOCFLAGS='-D warnings' cargo doc --package 'cubist*' --no-deps"
+
+[logging]
+verbose = true

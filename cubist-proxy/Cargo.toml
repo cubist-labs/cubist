@@ -1,0 +1,42 @@
+[package]
+name = "cubist-proxy"
+version = "0.1.0"
+edition = "2021"
+authors = ["kwantam <kwantam@gmail.com>", "djrenren <john@jrenner.net>"]
+description = "RPC multiplexer"
+repository = "https://github.com/cubist-alpha/cubist"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-trait.workspace = true
+cubist-config = { path = "../cubist-config" }
+ethers.workspace = true
+futures.workspace = true
+hyper = { workspace = true, features = ["client", "http1", "http2", "server"] }
+hyper-rustls = { workspace = true, features = ["webpki-roots"] }
+hyper-tungstenite.workspace = true
+paste.workspace = true
+pin-project.workspace = true
+secrecy.workspace = true
+serde.workspace = true
+serde_derive.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+tokio = { workspace = true, features = ["io-util", "macros", "net", "rt"] }
+tokio-rustls.workspace = true
+tokio-tungstenite = { workspace = true, features = [
+    "connect",
+    "rustls-tls-webpki-roots",
+] }
+tracing.workspace = true
+url.workspace = true
+webpki.workspace = true
+
+[dev-dependencies]
+hex.workspace = true
+rand.workspace = true
+rstest.workspace = true
+tokio = { workspace = true, features = ["full"] }
+tracing-subscriber.workspace = true
+tempfile.workspace = true

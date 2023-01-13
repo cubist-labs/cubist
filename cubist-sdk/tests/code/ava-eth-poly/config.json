@@ -1,0 +1,11 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+          "ethereum": { "files": [ "EthStorage.sol" ] },
+          "avalanche": { "files": [ "AvaStorage.sol" ] },
+          "polygon": { "files": [ "PolyStorage.sol" ] }
+        }
+    }
+}

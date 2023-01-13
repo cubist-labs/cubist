@@ -1,0 +1,19 @@
+[package]
+name = "cubist-util"
+version = "0.0.0"
+edition = "2021"
+
+[dependencies]
+cubist-config = { path = "../cubist-config" }
+itertools.workspace = true
+parse-display.workspace = true
+rust-embed.workspace = true
+tera.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tokio = { workspace = true, features = ["time"] }
+
+[dev-dependencies]
+rand.workspace = true
+tempfile.workspace = true
+tokio = { workspace = true, features = ["full"] }

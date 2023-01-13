@@ -1,0 +1,84 @@
+[bor.macos.aarch64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.2/bor_0.2.17_darwin_arm64.tar.gz'
+binaries = ['bor']
+hashes = ['0lSVAUInX30PqqVMQbDNL026gi0u2nVxgb8LkpYqpak=']
+[bor.macos.x86_64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.2/bor_0.2.17_darwin_amd64.tar.gz'
+binaries = ['bor']
+hashes = ['/OS5jOtLUjsU/FcQjU+pIi/VkKmCoibGSTq9fc/IDyY=']
+[bor.linux.x86_64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.2/bor_0.2.17_linux_amd64.tar.gz'
+binaries = ['bor']
+hashes = ['Yw3bvTrL/fMa1tXeQCWEWfaG4r/icRnn4C0URF+42fY=']
+[avalanchego.linux.x86_64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.5/avalanchego-linux-amd64-v1.9.1.tar.gz'
+binaries = [
+    'avalanche-network-runner-v1.3.0/avalanche-network-runner',
+    'avalanche-network-runner-v1.3.0/LICENSE',
+    'avalanche-network-runner-v1.3.0/LICENSE.header',
+    'avalanchego-v1.9.1/avalanchego',
+    'avalanchego-v1.9.1/plugins/evm',
+    'subnet-evm-v0.4.2/subnet-evm',
+    'subnet-evm-v0.4.2/LICENSE',
+]
+hashes = [
+    'SGJR9aNsQKzgd3nWjnfDp3CHhI3c5a+CJsJx4PaW6so=',
+    'FQaZUOLKl2Q9gX24PtbKfdIKhQlMmNr732KG0WQn6Og=',
+    'srWy7AD8cSZ6wXzBkDCDXIXMqaf/S6PoihM82GwB84k=',
+    '+7UsxaPJSIWRrgFWhAQqgirVjCfjHuSsHA0dtckbypI=',
+    'x1MwexxpqBwuBLcoAIuJ7xCarbV/uF9uAZ/hNlvQkM0=',
+    'NwzxrimDULG1nmiz9c4M1ctSXM5u0GHNsTRyCQEfHGA=',
+    '84CqUZDptXU8uShIx5lpI4QFccVXrP+DkBxn/JRx1Qg=',
+]
+[avalanchego.macos.x86_64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.5/avalanchego-macos-amd64-v1.9.1.tar.gz'
+binaries = [
+    'avalanche-network-runner-v1.3.0/avalanche-network-runner',
+    'avalanche-network-runner-v1.3.0/LICENSE',
+    'avalanche-network-runner-v1.3.0/LICENSE.header',
+    'avalanchego-v1.9.1/avalanchego',
+    'avalanchego-v1.9.1/plugins/evm',
+    'subnet-evm-v0.4.2/subnet-evm',
+    'subnet-evm-v0.4.2/LICENSE',
+]
+hashes = [
+    'rW+/mxOqrr+hFvVyyyw44ZRyvpymAZa+b6sgR6DufDQ=',
+    'FQaZUOLKl2Q9gX24PtbKfdIKhQlMmNr732KG0WQn6Og=',
+    'srWy7AD8cSZ6wXzBkDCDXIXMqaf/S6PoihM82GwB84k=',
+    'WbKJn0YvU254aJQoyVK9uGQ7gDdYQtJzCkuPNhEASpI=',
+    'yRYF/Ct3JULkIXYtXXOvMoqutOSGMYFz731FL+MDzIg=',
+    'Axv7Jz/a8qMbpHK6Jx+gIgHpMwxROr2960KjaFkbaNQ=',
+    '84CqUZDptXU8uShIx5lpI4QFccVXrP+DkBxn/JRx1Qg=',
+]
+[avalanchego.macos.aarch64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.5/avalanchego-macos-arm64-v1.9.1.tar.gz'
+binaries = [
+    'avalanche-network-runner-v1.3.0/avalanche-network-runner',
+    'avalanche-network-runner-v1.3.0/LICENSE',
+    'avalanche-network-runner-v1.3.0/LICENSE.header',
+    'avalanchego-v1.9.1/avalanchego',
+    'avalanchego-v1.9.1/plugins/evm',
+    'subnet-evm-v0.4.2/subnet-evm',
+    'subnet-evm-v0.4.2/LICENSE',
+]
+hashes = [
+    'CS22OUOW/RL+pRp931D6ZypBIv1pWZdlbljfrZu4qPc=',
+    'FQaZUOLKl2Q9gX24PtbKfdIKhQlMmNr732KG0WQn6Og=',
+    'srWy7AD8cSZ6wXzBkDCDXIXMqaf/S6PoihM82GwB84k=',
+    'WbKJn0YvU254aJQoyVK9uGQ7gDdYQtJzCkuPNhEASpI=',
+    'yRYF/Ct3JULkIXYtXXOvMoqutOSGMYFz731FL+MDzIg=',
+    'R+wKWNvQELxjFWJlxYBhY6kmMdpiznHNJxU3Zms/a7I=',
+    '84CqUZDptXU8uShIx5lpI4QFccVXrP+DkBxn/JRx1Qg=',
+]
+[anvil.macos.x86_64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.2/foundry_nightly_2022_10_19_darwin_amd64.tar.gz'
+binaries = ['anvil']
+hashes = ['mUN1d/woOFDz7hhnB/vyY3S6DSLLA3DWCxITrZQXRgM=']
+[anvil.macos.aarch64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.2/foundry_nightly_2022_10_19_darwin_arm64.tar.gz'
+binaries = ['anvil']
+hashes = ['jZfjFJAkgc0JcqZOUYkzifOC8RYGsgFTV7ITsSYq4n4=']
+[anvil.linux.x86_64]
+url = 'https://github.com/cubist-dev/localnet-binaries/raw/v0.0.2/foundry_nightly_2022_10_19_linux_amd64.tar.gz'
+binaries = ['anvil']
+hashes = ['6UGNaEolMkfRMtUmuGArhI2xqusE8WdZEDP0a75FADU=']

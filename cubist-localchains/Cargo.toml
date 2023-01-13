@@ -1,0 +1,37 @@
+[package]
+name = "cubist-localchains"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+async-trait.workspace = true
+base64.workspace = true
+blake3.workspace = true
+clap = { workspace = true, features = ["derive"] }
+color-eyre.workspace = true
+console.workspace = true
+cubist-util = { path = "../cubist-util" }
+cubist-proxy = { path = "../cubist-proxy" }
+cubist-config = { path = "../cubist-config" }
+dirs.workspace = true
+ethers-providers.workspace = true
+ethers.workspace = true
+eyre.workspace = true
+flate2.workspace = true
+futures.workspace = true
+hyper.workspace = true
+indicatif.workspace = true
+once_cell.workspace = true
+reqwest = { workspace = true }
+secrecy.workspace = true
+serde = { workspace = true, features = ["serde_derive"] }
+serde_json.workspace = true
+tar.workspace = true
+tempdir.workspace = true
+thiserror.workspace = true
+tokio = {workspace = true, features = ["rt", "rt-multi-thread", "macros", "fs", "process", "signal", "io-util"]} 
+toml.workspace = true
+tracing.workspace = true
+url = { workspace = true, features = ["serde"] }

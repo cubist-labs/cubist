@@ -1,0 +1,9 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+            "avalanche": { "files": [ "contracts/marketplace/Marketplace.sol" ] }
+        }
+    }
+}

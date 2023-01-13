@@ -1,0 +1,61 @@
+{
+  "name": "@cubist-alpha/cubist",
+  "author": "Cubist Inc.",
+  "version": "0.0.1",
+  "description": "Cubist Node.js SDK",
+  "homepage": "https://github.com/cubist-alpha/cubist",
+  "bugs": "https://github.com/cubist-alpha/cubist/issues",
+  "license": "UNLICENSED",
+  "files": [
+    "tsconfig.json",
+    "src/**",
+    "dist/**"
+  ],
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "gen-schema": "cargo run --bin generate_schema ./src/config/schema/",
+    "build": "tsc",
+    "fmt": "eslint . --ext .ts --fix",
+    "lint": "eslint . --ext .ts",
+    "prepack": "tsc",
+    "test": "jest --maxWorkers=1",
+    "markdown-docs": "typedoc --theme hugo --hideBreadcrumbs true --hideInPageTOC true",
+    "html-docs": "typedoc --plugin none"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@types/chai": "^4.3.3",
+    "@types/fs-extra": "^11.0.0",
+    "@types/jest": "^29.2.5",
+    "@types/node": "^18.11.18",
+    "@types/which": "^2.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.48.1",
+    "@typescript-eslint/parser": "^5.48.1",
+    "babel-jest": "^29.2.1",
+    "chai": "^4.3.6",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.31.0",
+    "eslint-config-google": "^0.14.0",
+    "fs-extra": "^11.1.0",
+    "jest": "^29.2.2",
+    "ts-jest": "^29.0.2",
+    "ts-node": "^10.9.1",
+    "typedoc": "^0.23.24",
+    "typedoc-hugo-theme": "^1.0.0",
+    "typedoc-plugin-markdown": "^3.14.0"
+  },
+  "dependencies": {
+    "@ethersproject/abi": "^5.7.0",
+    "@ethersproject/bytes": "^5.7.0",
+    "@ethersproject/providers": "^5.7.2",
+    "@typechain/ethers-v5": "^10.2.0",
+    "ajv": "^8.11.0",
+    "ajv-formats": "^2.1.1",
+    "ethers": "^5.7.1",
+    "fast-glob": "^3.2.12",
+    "typechain": "^8.1.1",
+    "typescript": "^4.9.4",
+    "which": "^3.0.0"
+  }
+}

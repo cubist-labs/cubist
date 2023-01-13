@@ -1,0 +1,43 @@
+[package]
+name = "cubist-config"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+figment = { workspace = true, features = ["json", "toml", "env", "test"] }
+path-clean.workspace = true
+clap = { workspace = true, features = ["derive", "color", "wrap_help"] }   # cli
+coins-bip39.workspace = true
+hex.workspace = true
+glob.workspace = true
+dotenv.workspace = true
+k256.workspace = true
+lazy_static.workspace = true
+percent-encoding.workspace = true
+regex.workspace = true
+secrecy.workspace = true
+
+# error handling related
+thiserror.workspace = true
+color-eyre = { workspace = true, default-features = false }
+eyre.workspace = true
+
+# serde related
+parse-display.workspace = true
+schemars = { workspace = true, features = ["url"] }
+serde.workspace = true
+serde_derive.workspace = true
+serde_json.workspace = true
+serde_with.workspace = true
+url = { workspace = true, features = ["serde"] }
+
+# utils
+tracing.workspace = true
+
+[dev-dependencies]
+pretty_assertions.workspace = true
+tempfile.workspace = true
+rusty-hook.workspace = true
+serial_test.workspace = true
+rand.workspace = true
+rstest.workspace = true
