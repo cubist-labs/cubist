@@ -775,9 +775,9 @@ dependencies = [
 
 [[package]]
 name = "console"
-version = "0.15.4"
+version = "0.15.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c9b6515d269224923b26b5febea2ed42b2d5f2ce37284a4dd670fedd6cb8347a"
+checksum = "c3d79fbe8970a77e3e34151cc13d3b3e248aa0faaecb9f6091fa07ebefe5ad60"
 dependencies = [
  "encode_unicode",
  "lazy_static",
@@ -956,7 +956,7 @@ dependencies = [
  "base64 0.13.1",
  "clap 4.0.32",
  "color-eyre",
- "console 0.15.4",
+ "console 0.15.5",
  "ctrlc",
  "cubist-config",
  "cubist-localchains",
@@ -1041,7 +1041,7 @@ dependencies = [
  "blake3",
  "clap 4.0.32",
  "color-eyre",
- "console 0.15.4",
+ "console 0.15.5",
  "cubist-config",
  "cubist-proxy",
  "cubist-util",
@@ -1279,7 +1279,7 @@ version = "0.10.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a92e7e37ecef6857fdc0c0c5d42fd5b0938e46590c2183cc92dd310a6d078eb1"
 dependencies = [
- "console 0.15.4",
+ "console 0.15.5",
  "tempfile",
  "zeroize",
 ]
@@ -2500,7 +2500,7 @@ version = "0.16.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2d207dc617c7a380ab07ff572a6e52fa202a2a8f355860ac9c38e23f8196be1b"
 dependencies = [
- "console 0.15.4",
+ "console 0.14.1",
  "lazy_static",
  "number_prefix",
  "regex",
@@ -2512,7 +2512,7 @@ version = "0.17.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4295cbb7573c16d310e99e713cf9e75101eb190ab31fccd35f2d2691b4352b19"
 dependencies = [
- "console 0.15.4",
+ "console 0.15.5",
  "number_prefix",
  "portable-atomic",
  "unicode-width",
