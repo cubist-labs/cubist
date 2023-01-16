@@ -39,7 +39,7 @@
     "eslint-config-google": "^0.14.0",
     "fs-extra": "^11.1.0",
     "jest": "^29.2.2",
-    "ts-jest": "^29.0.2",
+    "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
     "typedoc": "^0.23.24",
     "typedoc-hugo-theme": "^1.0.0",
