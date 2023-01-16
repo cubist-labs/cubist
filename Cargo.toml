@@ -28,7 +28,7 @@ color-eyre = "0.6.2"
 console = "0.15.3"
 coins-bip39 = "0.7.0"
 ctrlc = "3.2.4"
-dialoguer = "0.10.2"
+dialoguer = "0.10.3"
 dirs = "4.0.0"
 dotenv = "0.15.0"
 
