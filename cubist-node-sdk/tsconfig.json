@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "module": "commonjs",
+    "noImplicitAny": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "inlineSourceMap": true,
+    "declaration": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "target": "es2020"
+  },
+  "typedocOptions": {
+    "out": "./docs",
+    "excludeInternal": true,
+    "excludePrivate": true,
+    "excludeProtected": true,
+    "entryPoints": [
+      "src/config.ts",
+      "src/cubist.ts",
+      "src/test.ts"
+    ],
+    "categoryOrder": [ "Core", "Testing", "Internal" ]
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+  "include": ["src/**/*.ts", "src/config/schema/**.schema.json"]
+}

@@ -1,0 +1,45 @@
+{
+  "type": "JavaScript",
+  "build_dir": "./build_dir",
+  "deploy_dir": "../deploy_dir",
+  "contracts": {
+     "root_dir": "./contracts",
+     "targets": {
+       "avalanche": { "files": ["./contracts/ava.sol"] },
+       "polygon": { "files": ["./contracts/poly.sol"] },
+       "ethereum": { "files": ["./contracts/**/eth.sol"], "compiler": "solc" }
+     }
+  },
+  "network_profiles": {
+    "default": {
+      "avalanche": { "url": "http://localhost:9560" },
+      "polygon": { "url": "http://localhost:9545" },
+      "ethereum": { "url": "http://otherhost:7545" }
+    },
+    "dev": {
+      "avalanche": {
+        "url": "http://otherhost:9560",
+        "autostart": false
+      },
+      "polygon": { "url": "http://localhost:9545" },
+      "ethereum": { "url": "http://localhost:7545" }
+    },
+    "testnets": {
+      "avalanche": { "url": "http://localhost:9560" },
+      "ethereum": { "url": "http://otherhost:7545" },
+      "polygon": {
+        "url": "https://rpc-mumbai.maticvigil.com",
+        "proxy": {
+          "port": 9545,
+          "chain_id": 80001,
+          "creds": [
+              { "mnemonic": { "seed": { "env": "MY_MNEMONIC" }, "account_count": 2 } },
+              { "keystore": { "file": "/foo/bar", "password": { "file": ".secret" } } },
+              { "private_key": { "hex": { "env": "MY_PKEY" } } }
+          ]
+        }
+      }
+    }
+  },
+  "current_network_profile": "dev"
+}

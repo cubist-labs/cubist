@@ -1,0 +1,13 @@
+{
+  "type": "BadType",
+  "build_dir": "./build_dir",
+  "deploy_dir": "../deploy_dir",
+  "contracts": {
+     "root_dir": "./contracts",
+     "targets": {
+       "avalanche": { "files": ["./contracts/ava.sol"] },
+       "polygon": { "files": ["./contracts/poly.sol"] },
+       "solana": { "files": ["./contracts/sol.sol"], "compiler": "solang" }
+     }
+  }
+}

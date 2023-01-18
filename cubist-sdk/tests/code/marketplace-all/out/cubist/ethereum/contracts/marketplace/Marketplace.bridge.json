@@ -1,0 +1,23 @@
+{
+  "file": "contracts/marketplace/Marketplace.sol",
+  "sender": "ethereum",
+  "receiver": "avalanche",
+  "contracts": [
+    {
+      "name": "Marketplace",
+      "functions": {
+        "acceptOffer": "__cubist_event_Marketplace_acceptOffer",
+        "buy": "__cubist_event_Marketplace_buy",
+        "cancelDirectListing": "__cubist_event_Marketplace_cancelDirectListing",
+        "closeAuction": "__cubist_event_Marketplace_closeAuction",
+        "createListing": "__cubist_event_Marketplace_createListing",
+        "initialize": "__cubist_event_Marketplace_initialize",
+        "offer": "__cubist_event_Marketplace_offer",
+        "setAuctionBuffers": "__cubist_event_Marketplace_setAuctionBuffers",
+        "setContractURI": "__cubist_event_Marketplace_setContractURI",
+        "setPlatformFeeInfo": "__cubist_event_Marketplace_setPlatformFeeInfo",
+        "updateListing": "__cubist_event_Marketplace_updateListing"
+      }
+    }
+  ]
+}

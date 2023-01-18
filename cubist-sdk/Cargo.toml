@@ -1,0 +1,36 @@
+[package]
+name = "cubist-sdk"
+version = "0.2.0-alpha"
+edition = "2021"
+description = "SDK for working with Cubist dapps"
+
+[dependencies]
+cubist-localchains = { path = "../cubist-localchains" }
+cubist-config = { path = "../cubist-config" }
+cubist-util = { path = "../cubist-util" }
+
+async-trait.workspace = true
+futures.workspace = true
+lazy_static.workspace = true
+rust-embed = { workspace = true, features = ["interpolate-folder-path", "compression"] }
+secrecy.workspace = true
+tera.workspace = true
+thiserror.workspace = true
+tokio.workspace = true
+tracing.workspace = true
+url.workspace = true
+
+# solidity related
+ethers-solc = { workspace = true, features = ["svm-solc"] }
+ethers.workspace = true
+solang-parser.workspace = true
+
+# serde related
+serde_json.workspace = true
+serde.workspace = true
+
+[dev-dependencies]
+pretty_assertions.workspace = true
+tempdir.workspace = true
+tempfile.workspace = true
+walkdir.workspace = true
