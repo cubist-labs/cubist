@@ -1,0 +1,26 @@
+{
+    "type": "Rust",
+    "build_dir": "build",
+    "deploy_dir": "deploy",
+    "contracts": {
+      "root_dir": "contracts",
+      "targets": {
+        "__FOO_TARGET__" : {
+            "files": [
+                "./contracts/foo/Foo.sol"
+            ]
+        },
+        "__BAR_TARGET__" : {
+            "files": [
+                "./contracts/bar/Bar.sol"
+            ]
+        }
+      }
+    },
+    "network_profiles": {
+      "default": {
+          "__FOO_TARGET__": { "url": "http://127.0.0.1:8545/" },
+          "__BAR_TARGET__": { "url": "http://127.0.0.1:9545/" }
+      }
+    }
+  }

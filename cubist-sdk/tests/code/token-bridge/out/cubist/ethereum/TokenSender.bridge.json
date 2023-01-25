@@ -1,0 +1,13 @@
+{
+  "file": "TokenSender.sol",
+  "sender": "ethereum",
+  "receiver": "avalanche",
+  "contracts": [
+    {
+      "name": "TokenSender",
+      "functions": {
+        "bridgeReceive": "__cubist_event_TokenSender_bridgeReceive"
+      }
+    }
+  ]
+}

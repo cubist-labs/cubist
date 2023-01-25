@@ -1,0 +1,13 @@
+{
+  "file": "EthStorage.sol",
+  "sender": "polygon",
+  "receiver": "ethereum",
+  "contracts": [
+    {
+      "name": "EthStorage",
+      "functions": {
+        "store": "__cubist_event_EthStorage_store"
+      }
+    }
+  ]
+}

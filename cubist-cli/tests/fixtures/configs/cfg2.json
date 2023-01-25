@@ -1,0 +1,18 @@
+{
+    "type": "Rust",
+    "build_dir": "build",
+    "deploy_dir": "deploy",
+    "contracts": {
+        "root_dir": "contracts",
+        "targets": {
+            "ethereum": { "files": [ "contracts/c1.sol" ] },
+            "polygon": { "files": [ "contracts/c2.sol" ] }
+        }
+    },
+    "network_profiles": {
+        "default": {
+            "ethereum": { "url": "http://127.0.0.1:20000" },
+            "polygon":  { "url": "http://127.0.0.1:21000" }
+        }
+    }    
+}

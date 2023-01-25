@@ -1,0 +1,13 @@
+{
+  "type": "JavaScript",
+  "build_dir": "build",
+  "deploy_dir": "deploy",
+  "contracts": {
+    "root_dir": "contracts",
+    "targets": {
+      "ethereum" : {
+        "files": ["./contracts/invalid_solidity.sol"]
+      }
+    }
+  }
+}

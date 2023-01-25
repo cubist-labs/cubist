@@ -1,0 +1,37 @@
+name: Config schema
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [synchronize, opened, reopened, ready_for_review]
+    branches: [ "main" ]
+    paths:
+      - ".github/workflows/config-schema.yml"
+      - "cubist-config/**"
+      - "cubist-node-sdk/src/config/**/*.schema.json"
+  push:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  schema-check:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Generate schema files and make sure they're the same as the checked-in ones
+      run: |
+        set -eu
+        cargo xtask generate-schema /tmp/
+        echo "Comparing config.schema.json"
+        diff /tmp/config.schema.json cubist-node-sdk/src/config/schema/config.schema.json
+        echo "Comparing pre_compile_manifest.schema.json"
+        diff /tmp/pre_compile_manifest.schema.json cubist-node-sdk/src/config/schema/pre_compile_manifest.schema.json
+
+    # Only run a single instance of this workflow per branch/tag
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true

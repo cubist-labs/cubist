@@ -1,0 +1,16 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+          "avalanche": { "files": [ "contracts/extension/interface/IPlatformFee.sol",
+				    "contracts/interfaces/IThirdwebContract.sol",
+				    "contracts/interfaces/marketplace/IMarketplace.sol",
+				    "contracts/lib/FeeType.sol",
+				    "contracts/lib/CurrencyTransferLib.sol",
+				    "contracts/marketplace/Marketplace.sol"
+				  ] },
+          "ethereum": { "files": [ "contracts/User.sol" ] }
+        }
+    }
+}

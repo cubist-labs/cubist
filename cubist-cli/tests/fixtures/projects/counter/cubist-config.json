@@ -1,0 +1,40 @@
+{
+    "type": "Rust",
+    "build_dir": "build",
+    "deploy_dir": "deploy",
+    "contracts": {
+      "root_dir": "contracts",
+      "targets": {
+        "ethereum" : {
+            "files": [
+                "./contracts/From.sol"
+            ]
+        },
+        "polygon" : {
+            "files": [
+                "./contracts/To.sol"
+            ]
+        }
+      }
+    },
+    "current_network_profile": "testnets",
+    "network_profiles": {
+      "default": {
+          "ethereum": { "url": "http://127.0.0.1:8545/" },
+          "polygon": { "url": "http://127.0.0.1:9545/" }
+      },
+      "testnets": {
+          "ethereum": { "url": "http://127.0.0.1:8545/" },
+          "polygon":  {
+              "url": "https://rpc-mumbai.maticvigil.com",
+              "proxy": {
+                  "port": 9545,
+                  "chain_id": 80001,
+                  "creds": [{
+                      "mnemonic": { "seed": { "env": "CUBIST_TESTNET_MNEMONIC" } }
+                  }]
+              }
+          }
+      }
+    }
+  }

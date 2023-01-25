@@ -1,0 +1,26 @@
+{
+  "type": "JavaScript",
+  "build_dir": "./build_dir",
+  "deploy_dir": "../deploy_dir",
+  "contracts": {
+     "root_dir": "./contracts",
+     "targets": {
+       "avalanche": { "files": ["./contracts/ava.sol"] },
+       "polygon": { "files": ["./contracts/poly.sol"] },
+       "ethereum": { "files": ["./contracts/eth.sol"], "compiler": "solc" }
+     }
+  },
+  "network_profiles": {
+    "default": {
+      "avalanche": { "url": "http://localhost:9560" },
+      "polygon": { "url": "http://localhost:9545" },
+      "ethereum": { "url": "http://localhost:7545" }
+    },
+    "dev": {
+      "avalanche": { "url": "http://otherhost:9560" },
+      "polygon": { "url": "http://localhost:9545" },
+      "ethereum": { "url": "http://localhost:7545" }
+    }
+  },
+  "current_network_profile": "missingprofile"
+}

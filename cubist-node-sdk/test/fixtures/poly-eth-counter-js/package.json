@@ -1,0 +1,9 @@
+{
+  "author": "Cubist <hello@cubist.dev>",
+  "dependencies": {
+    "@cubist-labs/cubist": "../../"
+  },
+  "name": "poly-eth-counter-js",
+  "type": "module",
+  "version": "0.0.1"
+}

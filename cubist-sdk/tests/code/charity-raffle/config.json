@@ -1,0 +1,10 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+          "avalanche": { "files": [ "CharityRaffle.sol" ] },
+          "ethereum": { "files": [ "RafflePlayer.sol" ] }
+        }
+    }
+}
