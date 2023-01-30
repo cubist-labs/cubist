@@ -55,7 +55,7 @@ lazy_static = "1.4.0"
 # Using `crossbeam-channel` with `tokio` may cause issues
 # (https://docs.rs/notify/latest/notify/#crossbeam-channel--tokio), so we
 # disable it.
-notify = { version = "5.0.0", default-features = false, features = ["macos_kqueue"] }
+notify = { version = "5.1.0", default-features = false, features = ["macos_kqueue"] }
 
 itertools = "0.10.5"
 
