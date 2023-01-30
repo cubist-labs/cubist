@@ -94,7 +94,7 @@ tempfile = "3.3.0"
 tempdir = "0.3.7"
 tera = "1.17.1"
 thiserror = "1.0.38"
-tokio = "1.24.2"
+tokio = "1.25.0"
 tokio-rustls = "0.23"
 tokio-tungstenite = "0.17"
 
