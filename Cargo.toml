@@ -45,7 +45,7 @@ futures = "0.3.25"
 glob = "0.3.1"
 
 hex = "0.4.3"
-hyper = "0.14.23"
+hyper = "0.14.24"
 hyper-rustls = "0.23"
 hyper-tungstenite = "0.8.2"
 
