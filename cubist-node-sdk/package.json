@@ -55,7 +55,7 @@
     "ethers": "^5.7.1",
     "fast-glob": "^3.2.12",
     "typechain": "^8.1.1",
-    "typescript": "^4.9.4",
+    "typescript": "^4.9.5",
     "which": "^3.0.0"
   }
 }
