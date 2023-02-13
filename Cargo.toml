@@ -83,7 +83,7 @@ secrecy = "0.8.0"
 scopeguard = "1.1.0"
 serde = "1.0.152"
 serde_derive = "1.0.147"
-serde_json = "1.0.91"
+serde_json = "1.0.93"
 serde_with = "2.2.0"
 serial_test = "0.9.0"
 
