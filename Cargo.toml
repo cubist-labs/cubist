@@ -65,7 +65,7 @@ pin-project = "1.0.12"
 rand = "0.8.5"
 rusty-hook = "0.11.2"
 
-once_cell = "1.17.0"
+once_cell = "1.17.1"
 
 path-clean = "0.1.0"        # simple path cleaning
 parse-display = "0.6.0"
