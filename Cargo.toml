@@ -90,7 +90,7 @@ serial_test = "0.9.0"
 solang-parser = { git = "https://github.com/cubist-dev/solang/", rev = "78cb7d0326f36b39fc8f3b9af0a694e17a3f5e53" }
 
 tar = "0.4.38"
-tempfile = "3.3.0"
+tempfile = "3.4.0"
 tempdir = "0.3.7"
 tera = "1.17.1"
 thiserror = "1.0.38"
