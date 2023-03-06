@@ -1604,9 +1604,9 @@ dependencies = [
 
 [[package]]
 name = "ethers-contract-abigen"
-version = "1.0.2"
+version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3d4e5ad46aede34901f71afdb7bb555710ed9613d88d644245c657dc371aa228"
+checksum = "651115f37eb5a2c91289c184174f67bb9053c052b2189e3f162044e84ac5e505"
 dependencies = [
  "Inflector",
  "cfg-if",
@@ -1615,6 +1615,7 @@ dependencies = [
  "eyre",
  "getrandom",
  "hex",
+ "prettyplease",
  "proc-macro2",
  "quote",
  "regex",
@@ -1623,7 +1624,6 @@ dependencies = [
  "serde_json",
  "syn",
  "toml",
- "url",
  "walkdir",
 ]
 
@@ -3512,6 +3512,16 @@ dependencies = [
  "diff",
  "output_vt100",
  "yansi",
+]
+
+[[package]]
+name = "prettyplease"
+version = "0.1.24"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4ebcd279d20a4a0a2404a33056388e950504d891c855c7975b9a8fef75f3bf04"
+dependencies = [
+ "proc-macro2",
+ "syn",
 ]
 
 [[package]]
