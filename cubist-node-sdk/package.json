@@ -43,7 +43,7 @@
     "jest": "^29.2.2",
     "ts-jest": "^29.0.5",
     "ts-node": "^10.9.1",
-    "typedoc": "^0.23.24"
+    "typedoc": "^0.23.28"
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
