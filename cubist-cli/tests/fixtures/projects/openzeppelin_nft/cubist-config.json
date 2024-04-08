@@ -1,0 +1,24 @@
+{
+  "type": "Rust",
+  "build_dir": "build",
+  "deploy_dir": "deploy",
+  "allow_import_from_external": true,
+  "contracts": {        
+    "root_dir": "contracts",
+    "targets": {
+      "ethereum" : {
+          "files": [
+              "./contracts/GameItem.sol"
+          ]
+      }
+    },
+    "solidity_dependencies": {
+      "@openzeppelin/contracts": "4.9.3"
+    }
+  },
+  "network_profiles": {
+    "default": {
+        "ethereum": { "url": "http://127.0.0.1:8545/" }
+    }
+  }
+}

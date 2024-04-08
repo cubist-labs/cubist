@@ -1,0 +1,13 @@
+{
+  "file": "DynNFT.sol",
+  "sender": "ethereum",
+  "receiver": "polygon",
+  "contracts": [
+    {
+      "name": "DynNFT",
+      "functions": {
+        "growFlower": "__cubist_event_DynNFT_growFlower"
+      }
+    }
+  ]
+}

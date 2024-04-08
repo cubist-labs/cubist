@@ -1,0 +1,14 @@
+{
+  "file": "Marketplace.sol",
+  "sender": "ethereum",
+  "receiver": "avalanche",
+  "contracts": [
+    {
+      "name": "Marketplace",
+      "functions": {
+        "buy": "__cubist_event_Marketplace_buy",
+        "offer": "__cubist_event_Marketplace_offer"
+      }
+    }
+  ]
+}

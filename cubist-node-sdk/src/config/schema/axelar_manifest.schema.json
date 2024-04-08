@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AxelarManifest",
+  "description": "Per-target manifest file that the Axelar relayer produces",
+  "type": "object",
+  "required": [
+    "chainId",
+    "constAddressDeployer",
+    "gasReceiver",
+    "gateway",
+    "name"
+  ],
+  "properties": {
+    "chainId": {
+      "description": "Chain id",
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "constAddressDeployer": {
+      "description": "Deployer contract address",
+      "type": "string"
+    },
+    "gasReceiver": {
+      "description": "Gas receiver contract address",
+      "type": "string"
+    },
+    "gateway": {
+      "description": "Gateway contract address",
+      "type": "string"
+    },
+    "name": {
+      "description": "Chain name",
+      "type": "string"
+    }
+  }
+}

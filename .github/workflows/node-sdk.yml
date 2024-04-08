@@ -1,0 +1,67 @@
+name: Node.js SDK
+
+on:
+  # Run every day at 1am to initialize the daily cache
+  schedule:
+  - cron: "0 1 * * *"
+  workflow_dispatch:
+  pull_request:
+    types: [synchronize, opened, reopened, ready_for_review]
+    branches: [ "main" ]
+  push:
+    branches: ["main"]
+
+env:
+  CARGO_TERM_COLOR: always
+  RUSTC_WRAPPER: sccache
+  SCCACHE_CACHE_SIZE: 1G
+
+
+jobs:
+  node-sdk-build:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    defaults:
+      run:
+        working-directory: cubist-node-sdk
+    strategy:
+      matrix:
+        node-version: [ 18.x, 20.x ]
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'yarn'
+        cache-dependency-path: cubist-node-sdk/yarn.lock
+    - name: Install dependencies
+      run: yarn
+    - name: Build
+      run: yarn build
+    - name: Lint
+      run: yarn lint
+    - name: Set up Rust with caching
+      uses: ./.github/actions/rust-cache
+      with:
+        key: node-${{ hashFiles('Cargo.lock') }}
+        additional-restore-key: rust-${{ hashFiles('Cargo.lock') }}
+
+    - name: Build Cubist 
+      run: cargo build --bin cubist
+
+    - name: Build
+      run: yarn build
+
+    - name: Test
+      run: |
+        set -eu
+        if [ "$(git rev-parse --abbrev-ref HEAD)" == "main" ] && [ ! -z "${{ secrets.CUBIST_TESTNET_MNEMONIC }}" ]; then
+           echo 'CUBIST_TESTNET_MNEMONIC = "${{ secrets.CUBIST_TESTNET_MNEMONIC }}"' > .env
+        fi
+        yarn test
+
+    # Only run a single instance of this workflow per branch/tag
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-${{ matrix.node-version }}
+      cancel-in-progress: true

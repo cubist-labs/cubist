@@ -1,0 +1,14 @@
+{
+  "file": "EthStorage.sol",
+  "sender": "avalanche",
+  "receiver": "ethereum",
+  "contracts": [
+    {
+      "name": "EthStorage",
+      "functions": {
+        "store": "__cubist_event_EthStorage_store",
+        "storePayable": "__cubist_event_EthStorage_storePayable"
+      }
+    }
+  ]
+}

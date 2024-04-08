@@ -1,0 +1,16 @@
+{
+  "type": "Rust",
+  "contracts": {
+     "root_dir": "./contracts",
+     "targets": {
+       "avalanche": { "files": ["./contracts/ava.sol"] },
+       "ethereum": { "files": ["./contracts/eth.sol"] }
+     }
+  },
+  "network_profiles": {
+    "default": {
+      "avalanche": { "url": "http://localhost:9560" },
+      "ethereum": { "url": "http://localhost:8545" }
+    }
+  }
+}

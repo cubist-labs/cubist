@@ -1,0 +1,769 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Config",
+  "description": "Top-level cubist application configuration.\n\nConfigs are consumed by all SDKs.",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "allow_import_from_external": {
+      "description": "Allows or disables imports from external sources (GitHub and npm/Yarn).",
+      "default": false,
+      "type": "boolean"
+    },
+    "bridge_provider": {
+      "description": "The bridge provider to use for cross-chain invocations.",
+      "default": "Cubist",
+      "allOf": [
+        {
+          "$ref": "#/definitions/BridgeProvider"
+        }
+      ]
+    },
+    "build_dir": {
+      "description": "Path to the build directory.",
+      "default": "build",
+      "type": "string"
+    },
+    "contracts": {
+      "description": "Contract configurations.",
+      "default": {
+        "import_dirs": [
+          "node_modules"
+        ],
+        "root_dir": "contracts",
+        "targets": {}
+      },
+      "allOf": [
+        {
+          "$ref": "#/definitions/ContractsConfig"
+        }
+      ]
+    },
+    "current_network_profile": {
+      "description": "Selected network profile.  If omitted, defaults to \"default\". A network profile with the same name must be defined in `network_profiles`.",
+      "default": "default",
+      "type": "string"
+    },
+    "deploy_dir": {
+      "description": "Path to the deploy directory.",
+      "default": "deploy",
+      "type": "string"
+    },
+    "network_profiles": {
+      "description": "A map of named network profiles for use in development, testing, etc.",
+      "default": {
+        "default": {}
+      },
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/definitions/NetworkProfile"
+      }
+    },
+    "type": {
+      "description": "Project type",
+      "allOf": [
+        {
+          "$ref": "#/definitions/ProjType"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "definitions": {
+    "AvalancheConfig": {
+      "description": "A config for avalanche endpoints",
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "autostart": {
+          "description": "Whether this this chain is already running or should be started (applies only if `url` is a loopback address).",
+          "default": true,
+          "type": "boolean"
+        },
+        "num_nodes": {
+          "description": "Number of nodes in the network (min 4)",
+          "default": 5,
+          "type": "integer",
+          "format": "uint16",
+          "minimum": 0.0
+        },
+        "proxy": {
+          "description": "Whether to run a local credentials proxy in front of the endpoint (applies only if `url` is a remote address).",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ProxyConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "subnets": {
+          "description": "Optional subnets to create",
+          "default": [],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/SubnetInfo"
+          }
+        },
+        "url": {
+          "description": "Url the endpoint can be found at",
+          "allOf": [
+            {
+              "$ref": "#/definitions/String"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "BridgeProvider": {
+      "description": "Bridge provider options Cubist supports",
+      "oneOf": [
+        {
+          "description": "Use our bridging relayers",
+          "type": "string",
+          "enum": [
+            "Cubist"
+          ]
+        },
+        {
+          "description": "Use Axelar's interfaces and relayers",
+          "type": "string",
+          "enum": [
+            "Axelar"
+          ]
+        }
+      ]
+    },
+    "Compiler": {
+      "description": "The compiler used for compiling contract code.",
+      "oneOf": [
+        {
+          "description": "Compile with the solc compiler.",
+          "type": "string",
+          "enum": [
+            "solc"
+          ]
+        },
+        {
+          "description": "Compile with the solang compiler.",
+          "type": "string",
+          "enum": [
+            "solang"
+          ]
+        },
+        {
+          "description": "Compile with the Soroban compiler.",
+          "type": "string",
+          "enum": [
+            "soroban"
+          ]
+        }
+      ]
+    },
+    "ContractsConfig": {
+      "description": "Contract configuration.",
+      "type": "object",
+      "required": [
+        "root_dir",
+        "targets"
+      ],
+      "properties": {
+        "import_dirs": {
+          "description": "Paths to search for imports.",
+          "default": [
+            "node_modules"
+          ],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "root_dir": {
+          "description": "Root directory for contracts.",
+          "type": "string"
+        },
+        "solidity_dependencies": {
+          "description": "Solidity dependencies.",
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "targets": {
+          "description": "The map of chains to target configs.",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/TargetConfig"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "CredConfig": {
+      "description": "Different ways to configure credentials",
+      "oneOf": [
+        {
+          "description": "Mnemonic-based",
+          "type": "object",
+          "required": [
+            "mnemonic"
+          ],
+          "properties": {
+            "mnemonic": {
+              "$ref": "#/definitions/MnemonicConfig"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "description": "Keystore-based",
+          "type": "object",
+          "required": [
+            "keystore"
+          ],
+          "properties": {
+            "keystore": {
+              "$ref": "#/definitions/KeystoreConfig"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "description": "Private key-based, hex-encoded private key (should not start with \"0x\")",
+          "type": "object",
+          "required": [
+            "private_key"
+          ],
+          "properties": {
+            "private_key": {
+              "$ref": "#/definitions/PrivateKeyConfig"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "description": "Identity-based",
+          "type": "object",
+          "required": [
+            "identity"
+          ],
+          "properties": {
+            "identity": {
+              "$ref": "#/definitions/IdentityConfig"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "EthereumConfig": {
+      "description": "Configuration for ethereum endpoints",
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "autostart": {
+          "description": "Whether this this chain is already running or should be started (applies only if `url` is a loopback address).",
+          "default": true,
+          "type": "boolean"
+        },
+        "bootstrap_mnemonic": {
+          "description": "Accounts to generate and fund for local testnet",
+          "default": {
+            "account_count": 1,
+            "derivation_path": "m/44'/60'/0'/0/",
+            "seed": {
+              "secret": "***CUBIST REDACTED SECRET***"
+            }
+          },
+          "allOf": [
+            {
+              "$ref": "#/definitions/MnemonicConfig"
+            }
+          ]
+        },
+        "proxy": {
+          "description": "Whether to run a local credentials proxy in front of the endpoint (applies only if `url` is a remote address).",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ProxyConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "url": {
+          "description": "Url the endpoint can be found at",
+          "allOf": [
+            {
+              "$ref": "#/definitions/String"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "Glob": {
+      "description": "A glob pattern for matching files.",
+      "type": "string"
+    },
+    "GlobsOrPaths": {
+      "description": "A list of globs or paths (always desrialzed as globs).",
+      "anyOf": [
+        {
+          "description": "List of globs",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Glob"
+          }
+        },
+        {
+          "description": "List of resolved paths (i.e., globs that have been resolved to paths)",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "IdentityConfig": {
+      "description": "Configuration for identities",
+      "type": "object",
+      "required": [
+        "identity"
+      ],
+      "properties": {
+        "identity": {
+          "description": "Identity",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "KeystoreConfig": {
+      "description": "Configuration for keystore-based credentials",
+      "type": "object",
+      "required": [
+        "file",
+        "password"
+      ],
+      "properties": {
+        "file": {
+          "description": "Encrypted keystore",
+          "type": "string"
+        },
+        "password": {
+          "description": "Password for decrypting the keystore",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SecretKind"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "MnemonicConfig": {
+      "description": "Configuration for mnemonic-based credentials",
+      "type": "object",
+      "required": [
+        "seed"
+      ],
+      "properties": {
+        "account_count": {
+          "description": "The number of accounts to generate using the mnemonic",
+          "default": 1,
+          "type": "integer",
+          "format": "uint16",
+          "minimum": 0.0
+        },
+        "derivation_path": {
+          "description": "The derivation path, or None for the default `m/44’/60’/0’/0/`",
+          "default": "m/44'/60'/0'/0/",
+          "type": "string"
+        },
+        "seed": {
+          "description": "The bip39 english string used as the seed for generating accounts",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SecretKind"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "NetworkProfile": {
+      "description": "The configuration for a suite of endpoints. Used to specify a single or multi-chain environment",
+      "type": "object",
+      "properties": {
+        "ava_subnet": {
+          "description": "configuration for a avalanche subnet endpoint",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AvalancheConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "avalanche": {
+          "description": "configuration for an avalanche endpoint",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AvalancheConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ethereum": {
+          "description": "configuration for an ethereum endpoint",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/EthereumConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "polygon": {
+          "description": "configuration for a polygon endpoint",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/PolygonConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "stellar": {
+          "description": "configuration for a Stellar endpoint",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/StellarConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "PolygonConfig": {
+      "description": "A config for polygon endpoints",
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "autostart": {
+          "description": "Whether this this chain is already running or should be started (applies only if `url` is a loopback address).",
+          "default": true,
+          "type": "boolean"
+        },
+        "local_accounts": {
+          "description": "Accounts to generate and fund for local testnet",
+          "default": [
+            {
+              "mnemonic": {
+                "account_count": 1,
+                "derivation_path": "m/44'/60'/0'/0/",
+                "seed": {
+                  "secret": "***CUBIST REDACTED SECRET***"
+                }
+              }
+            }
+          ],
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CredConfig"
+          }
+        },
+        "proxy": {
+          "description": "Whether to run a local credentials proxy in front of the endpoint (applies only if `url` is a remote address).",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ProxyConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "url": {
+          "description": "Url the endpoint can be found at",
+          "allOf": [
+            {
+              "$ref": "#/definitions/String"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "PrivateKeyConfig": {
+      "description": "Configuration for private key-based credentials",
+      "type": "object",
+      "required": [
+        "hex"
+      ],
+      "properties": {
+        "hex": {
+          "description": "Hex-encoded private key (should not start with \"0x\")",
+          "allOf": [
+            {
+              "$ref": "#/definitions/SecretKind"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ProjType": {
+      "description": "The project type. We support writing off-chain code in JavaScript, TypeScript, and Rust.",
+      "oneOf": [
+        {
+          "description": "JavaScript",
+          "type": "string",
+          "enum": [
+            "JavaScript"
+          ]
+        },
+        {
+          "description": "TypeScript",
+          "type": "string",
+          "enum": [
+            "TypeScript"
+          ]
+        },
+        {
+          "description": "Rust",
+          "type": "string",
+          "enum": [
+            "Rust"
+          ]
+        }
+      ]
+    },
+    "ProxyConfig": {
+      "description": "Proxy configuration",
+      "type": "object",
+      "required": [
+        "chain_id",
+        "creds",
+        "port"
+      ],
+      "properties": {
+        "chain_id": {
+          "description": "Chain id (transaction chain ID must be set before signing)",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "creds": {
+          "description": "Credentials configuration",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/CredConfig"
+          }
+        },
+        "port": {
+          "description": "Local port where the proxy will run",
+          "type": "integer",
+          "format": "uint16",
+          "minimum": 0.0
+        }
+      },
+      "additionalProperties": false
+    },
+    "SecretKind": {
+      "description": "Different ways to provide a secret value",
+      "anyOf": [
+        {
+          "description": "Secret value is the value of an environment variable. If found, .env file is automatically loaded.",
+          "type": "object",
+          "required": [
+            "env"
+          ],
+          "properties": {
+            "env": {
+              "description": "Name of the environment variable",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "description": "Secret value is the contents of a file",
+          "type": "object",
+          "required": [
+            "file"
+          ],
+          "properties": {
+            "file": {
+              "description": "File path. If the path is relative, it is resolved against the **current working directory**, not project root directory.  (TODO: consider changing this)",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        {
+          "description": "Secret saved as plain text",
+          "type": "object",
+          "required": [
+            "secret"
+          ],
+          "properties": {
+            "secret": {
+              "description": "The secret value",
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "StellarConfig": {
+      "description": "A config for Stellar endpoints",
+      "type": "object",
+      "required": [
+        "identities",
+        "url"
+      ],
+      "properties": {
+        "autostart": {
+          "description": "Whether this this chain is already running or should be started (applies only if `url` is a loopback address).",
+          "default": true,
+          "type": "boolean"
+        },
+        "identities": {
+          "description": "Identities",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "proxy": {
+          "description": "Whether to run a local credentials proxy in front of the endpoint (applies only if `url` is a remote address).",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/ProxyConfig"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "url": {
+          "description": "Url the endpoint can be found at",
+          "allOf": [
+            {
+              "$ref": "#/definitions/String"
+            }
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "String": {
+      "type": "string"
+    },
+    "SubnetInfo": {
+      "description": "Subnet information.",
+      "type": "object",
+      "required": [
+        "blockchain_id",
+        "chain_id",
+        "vm_id",
+        "vm_name"
+      ],
+      "properties": {
+        "blockchain_id": {
+          "description": "Blockchain id, **must be derived** from everything else",
+          "type": "string"
+        },
+        "chain_id": {
+          "description": "Chain ID, must be unique across all chains.",
+          "type": "integer",
+          "format": "uint32",
+          "minimum": 0.0
+        },
+        "vm_id": {
+          "description": "VM id, **must be derived** from 'vm_name' (TODO: compute this field)",
+          "type": "string"
+        },
+        "vm_name": {
+          "description": "Arbitrary VM name",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "TargetConfig": {
+      "description": "Target configuration.",
+      "anyOf": [
+        {
+          "description": "Target configuration for an EVM target",
+          "type": "object",
+          "required": [
+            "files"
+          ],
+          "properties": {
+            "compiler": {
+              "description": "Compiler to compile the contract with.",
+              "default": "solc",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/Compiler"
+                }
+              ]
+            },
+            "files": {
+              "description": "List of globs pointing to source files.",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/GlobsOrPaths"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "description": "Target configuration for Stellar",
+          "type": "object",
+          "required": [
+            "contracts",
+            "root"
+          ],
+          "properties": {
+            "contracts": {
+              "description": "The contracts in the workspace",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "root": {
+              "description": "The root of the Stellar workspace",
+              "type": "string"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

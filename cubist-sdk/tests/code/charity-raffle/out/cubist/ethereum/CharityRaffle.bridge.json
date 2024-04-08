@@ -1,0 +1,13 @@
+{
+  "file": "CharityRaffle.sol",
+  "sender": "ethereum",
+  "receiver": "avalanche",
+  "contracts": [
+    {
+      "name": "CharityRaffle",
+      "functions": {
+        "enterRaffle": "__cubist_event_CharityRaffle_enterRaffle"
+      }
+    }
+  ]
+}

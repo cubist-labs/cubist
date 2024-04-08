@@ -1,0 +1,13 @@
+{
+  "file": "Used.sol",
+  "sender": "ethereum",
+  "receiver": "avalanche",
+  "contracts": [
+    {
+      "name": "Used",
+      "functions": {
+        "store": "__cubist_event_Used_store"
+      }
+    }
+  ]
+}

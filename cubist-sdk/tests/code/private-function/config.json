@@ -1,0 +1,10 @@
+{
+    "type": "JavaScript",
+    "contracts": {
+        "root_dir": ".",
+        "targets": {
+          "ethereum": { "files": [ "Used.sol" ] },
+          "avalanche": { "files": [ "User.sol" ] }
+        }
+    }
+}

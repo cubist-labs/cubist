@@ -1,0 +1,21 @@
+[package]
+name = "cubist-util"
+version = "0.2.1-alpha"
+edition = "2021"
+description = "Cubist utilities"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+cubist-config = { path = "../cubist-config" }
+itertools.workspace = true
+parse-display.workspace = true
+rust-embed.workspace = true
+tera.workspace = true
+thiserror.workspace = true
+tracing.workspace = true
+tokio = { workspace = true, features = ["time"] }
+
+[dev-dependencies]
+rand.workspace = true
+tempfile.workspace = true
+tokio = { workspace = true, features = ["full"] }
