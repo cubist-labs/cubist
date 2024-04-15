@@ -964,7 +964,7 @@ dependencies = [
  "fs_extra",
  "futures",
  "glob",
- "itertools 0.10.5",
+ "itertools 0.11.0",
  "lazy_static",
  "notify",
  "parse-display",
@@ -1134,7 +1134,7 @@ name = "cubist-util"
 version = "0.2.1-alpha"
 dependencies = [
  "cubist-config",
- "itertools 0.10.5",
+ "itertools 0.11.0",
  "parse-display",
  "rand 0.8.5",
  "rust-embed",
