@@ -28,7 +28,7 @@ coins-bip39 = "0.7.0"
 ctrlc = "3.2.5"
 
 dialoguer = "0.10.3"
-dirs = "4.0.0"
+dirs = "5.0.1"
 dotenv = "0.15.0"
 
 eyre = "0.6.8"
