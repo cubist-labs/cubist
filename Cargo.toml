@@ -19,7 +19,7 @@ base64 = "0.21.4"
 blake3 = "1.5.0"
 
 clap = "4.5.1"
-clap_complete = "4.5.1"
+clap_complete = "4.5.2"
 clap_mangen = "0.2.20"
 color-eyre = { version = "0.6.2", default-features = false }
 console = "0.15.5"
