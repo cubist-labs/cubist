@@ -1005,7 +1005,7 @@ dependencies = [
  "figment",
  "glob",
  "hex",
- "k256 0.11.6",
+ "k256 0.13.1",
  "lazy_static",
  "parse-display",
  "path-clean",
