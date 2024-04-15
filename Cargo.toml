@@ -60,7 +60,7 @@ lazy_static = "1.4.0"
 # disable it.
 notify = { version = "5.1.0", default-features = false, features = ["macos_kqueue"] }
 
-itertools = "0.10.5"
+itertools = "0.11.0"
 
 k256 = "0.11.6"
 
