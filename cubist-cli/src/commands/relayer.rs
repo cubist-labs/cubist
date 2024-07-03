@@ -343,7 +343,7 @@ impl<M: Middleware + 'static> Relayer<M> {
     /// # Returns
     ///
     /// A future that completes when all necessary bridges are spun up
-    /// (i.e., when they have already regestered listeners for all
+    /// (i.e., when they have already registered listeners for all
     /// events of interest).
     async fn bridges_for_deployment(
         &mut self,

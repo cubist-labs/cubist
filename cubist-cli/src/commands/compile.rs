@@ -57,7 +57,7 @@ fn compile_solc_files(config: &Config) -> Result<()> {
 
         let target_project = TargetProjectInfo::new(config, target)?;
 
-        // Only Solc supported at the moment
+        // Only Solc is supported at the moment
         if target_project.compiler != Compiler::Solc {
             continue;
         }

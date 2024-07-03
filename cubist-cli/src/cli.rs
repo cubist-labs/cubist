@@ -39,7 +39,7 @@ pub enum Commands {
         /// Directory where to create project
         #[clap(long = "dir", value_parser, value_hint = clap::ValueHint::DirPath)]
         dir: Option<PathBuf>,
-        /// Force creation (e.g., by overwrite existing files or ignoring non-standard templates)
+        /// Force creation (e.g., by overwriting existing files or ignoring non-standard templates)
         #[clap(long, action, default_value = "false")]
         force: bool,
         /// Branch to pull from, if creating a project from template

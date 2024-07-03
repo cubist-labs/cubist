@@ -205,7 +205,7 @@ impl PreCompiler {
     }
 
     /// Attempts to compile the original source files. This ensures that the later steps in our
-    /// compilation process deal with sane source files.
+    /// compilation process deals with sane source files.
     pub fn validate_solidity_source_files(
         compiler_config: &CompilerConfig,
         contracts: &ContractsConfig,

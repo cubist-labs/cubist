@@ -14,7 +14,7 @@ use cubist_config::ProjType;
 /// * `name`  - Project name
 /// * `type_` - Project type/language
 /// * `dir`   - Directory to create the project in
-/// * `force` - Force overwrite existing configuration if one exists
+/// * `force` - Force overwrites existing configuration if one exists
 pub fn empty(name: &str, type_: ProjType, dir: &Path, force: bool) -> Result<()> {
     println!(
         "{} new {} project {} in {}",

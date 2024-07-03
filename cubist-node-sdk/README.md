@@ -10,7 +10,7 @@ With Cubist, you write contracts as if they were all going to be deployed on
 the same chain.  This means you can have a contract directly call a method on
 another contract, as if they were on the same chain. You don't need to commit
 to the chain you're going to deploy a contract to in advance nor clutter your
-code with low-level, error-prone message passing code. Instead, with Cubist,
+code with low-level, error-prone message-passing code. Instead, with Cubist,
 you specify your deployment plan in a [config file][CubistConfig] by mapping
 contract source files to target chains.
 
@@ -148,8 +148,8 @@ Then let's create two solidity files in the `contracts` directory:
     }
     ```
 
-Let's also say we want deploy `Receiver` to Ethereum and the `Sender` to
-Polygon. To do this, we to need update the `contracts` build and deployment
+Let's also say we want to deploy `Receiver` to Ethereum and the `Sender` to
+Polygon. To do this, we need to update the `contracts` build and deployment
 plan in `cubst-config.json`:
 
 ```json
